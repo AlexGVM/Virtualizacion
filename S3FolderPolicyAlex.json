@@ -1,0 +1,72 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "VisualEditor0",
+            "Effect": "Allow",
+            "Action": [
+                "s3:ListStorageLensConfigurations",
+                "s3:ListAccessPointsForObjectLambda",
+                "s3:GetAccessPoint",
+                "s3:PutAccountPublicAccessBlock",
+                "s3:GetAccountPublicAccessBlock",
+                "s3:ListAllMyBuckets",
+                "s3:ListAccessPoints",
+                "s3:PutAccessPointPublicAccessBlock",
+                "s3:ListJobs",
+                "s3:PutStorageLensConfiguration",
+                "s3:ListMultiRegionAccessPoints",
+                "s3:CreateJob"
+            ],
+            "Resource": "*"
+        },
+        {
+            "Sid": "VisualEditor1",
+            "Effect": "Allow",
+            "Action": "s3:*",
+            "Resource": [
+                "arn:aws:s3:::alexandervillatoro1182118",
+                "arn:aws:s3:*:278308090282:job/*",
+                "arn:aws:s3-object-lambda:*:278308090282:accesspoint/*",
+                "arn:aws:s3:*:278308090282:storage-lens/*",
+                "arn:aws:s3:::*/*",
+                "arn:aws:s3:us-west-2:278308090282:async-request/mrap/*/*",
+                "arn:aws:s3:*:278308090282:accesspoint/*"
+            ]
+        },
+        {
+            "Sid": "VisualEditor2",
+            "Action": [
+                "s3:ListBucket"
+            ],
+            "Effect": "Allow",
+            "Resource": [
+                "arn:aws:s3:::alexandervillatoro1182118"
+            ],
+            "Condition": {
+                "StringLike": {
+                    "s3:prefix": [
+                        "hola/*"
+                    ]
+                }
+            }
+        },
+        {
+            "Sid": "VisualEditor3",
+            "Action": [
+                "s3:ListBucket"
+            ],
+            "Effect": "Deny",
+            "Resource": [
+                "arn:aws:s3:::alexandervillatoro1182118"
+            ],
+            "Condition": {
+                "StringLike": {
+                    "s3:prefix": [
+                        "mundo/*"
+                    ]
+                }
+            }
+        }
+    ]
+}
